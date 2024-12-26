@@ -1,14 +1,11 @@
 @charset "UTF-8";
 /*!
-* Start Bootstrap - Resume v7.0.6 (https://startbootstrap.com/theme/resume)
-* Copyright 2013-2023 Start Bootstrap
-* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
+* Start Bootstrap - Resume v7.0.6 (https://startbootstrap.com/theme/resume) Copyright 2013-2023 Start Bootstrap Licensed under MIT
+* (https://github.com/StartBootstrap/startbootstrap-resume/blob/master/LICENSE)
 */
 /*!
- * Bootstrap  v5.2.3 (https://getbootstrap.com/)
- * Copyright 2011-2022 The Bootstrap Authors
- * Copyright 2011-2022 Twitter, Inc.
- * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ * Bootstrap  v5.2.3 (https://getbootstrap.com/) Copyright 2011-2022 The Bootstrap Authors Copyright 2011-2022 Twitter, Inc. Licensed under MIT
+ * (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
   --bs-blue: #0d6efd;
@@ -250,6 +247,11 @@ a {
   color: var(--bs-link-color);
   text-decoration: underline;
 }
+
+a.nounderline {
+  text-decoration: none; 
+}
+
 a:hover {
   color: var(--bs-link-hover-color);
 }
@@ -446,12 +448,7 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
-/* rtl:raw:
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="number"] {
-  direction: ltr;
+/* rtl:raw: [type="tel"], [type="url"], [type="email"], [type="number"] { direction: ltr;
 }
 */
 ::-webkit-search-decoration {
@@ -5911,12 +5908,7 @@ textarea.form-control-lg {
   background-size: 100% 100%;
 }
 
-/* rtl:options: {
-  "autoRename": true,
-  "stringMap":[ {
-    "name"    : "prev-next",
-    "search"  : "prev",
-    "replace" : "next"
+/* rtl:options: { "autoRename": true, "stringMap":[ { "name"    : "prev-next", "search"  : "prev", "replace" : "next"
   } ]
 } */
 .carousel-control-prev-icon {

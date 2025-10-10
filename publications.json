@@ -86,6 +86,23 @@
       }
     },
     {
+      "title": "Client Availability in Federated Learning: It Matters!",
+      "authors": [
+        "D Garg",
+        "D Sanyal",
+        "M Lee",
+        "A Tumanov",
+        "A Gavrilovska"
+      ],
+      "venue": "EuroMLSys 2025",
+      "thumbnail": "images/thumbs/1.jpg",
+      "selected": 1,
+      "award": "",
+      "links": {
+        "link": "https://dl.acm.org/doi/10.1145/3721146.3721964"
+      }
+    },
+    {
       "title": "Flame: Simplifying Topology Extension in Federated Learning",
       "authors": [
         "H Daga",

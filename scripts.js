@@ -222,3 +222,61 @@ window.onclick = function (event) {
     closeModal();
   }
 }
+
+/* --------------------- Travel Map (Leaflet) --------------------- */
+// Load Leaflet dynamically and initialize the map
+function initTravelMap() {
+  if (!document.getElementById('travelMap')) return;
+
+  // load script dynamically
+  const leafletScript = document.createElement('script');
+  leafletScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  leafletScript.onload = () => {
+    try {
+      const map = L.map('travelMap').setView([33.7490, -84.3880], 5); // Atlanta sample
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      // marker color categories: work, vacation, home
+      const icon = (color) => L.divIcon({
+        className: 'custom-marker',
+        html: `<span style="background:${color}" class="dot"></span>`,
+        iconSize: [18, 18],
+        iconAnchor: [9, 9]
+      });
+
+      // helper to add marker by latlng or geocode by name (simple)
+      function addMarker({ lat, lng, name, category = 'work' }) {
+        const colors = { work: '#2a7ae2', vacation: '#e24a4a', home: '#4ac28a' };
+        if (lat && lng) {
+          L.marker([lat, lng], { icon: icon(colors[category]) }).addTo(map).bindPopup(`<strong>${name}</strong>`);
+        } else if (name) {
+          // Use Nominatim for simple name -> latlng (rate-limited, public)
+          fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(name)}`)
+            .then(r => r.json())
+            .then(results => {
+              if (results && results[0]) {
+                const latf = parseFloat(results[0].lat), lngf = parseFloat(results[0].lon);
+                L.marker([latf, lngf], { icon: icon(colors[category]) }).addTo(map).bindPopup(`<strong>${name}</strong>`);
+                map.setView([latf, lngf], 6);
+              }
+            }).catch(() => {
+              console.warn('Geocoding failed for', name);
+            });
+        }
+      }
+
+      // Add sample Atlanta work marker
+      addMarker({ name: 'Atlanta, GA, USA', category: 'work' });
+
+      // expose helper globally for quick additions in console or future UI
+      window.addTravelLocation = addMarker;
+    } catch (e) { console.error('Leaflet init failed', e); }
+  };
+  document.body.appendChild(leafletScript);
+}
+
+// Initialize travel map after DOM loaded
+document.addEventListener('DOMContentLoaded', initTravelMap);

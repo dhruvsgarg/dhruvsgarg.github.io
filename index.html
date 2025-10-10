@@ -20,6 +20,9 @@
         href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;500;600&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Leaflet for travel map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-sA+e2pF0bawGqk7q8b2Q0VJfQ5s3sVQ5v+3o2b2kQro=" crossorigin="" />
 </head>
 
 <body id="top">
@@ -28,6 +31,10 @@
             <h1>Dhruv Garg</h1>
             <p>PhD Student, Computer Science • Georgia Institute of
                 Technology</p>
+            <p class="mentors-top">Advisors: <a href="https://faculty.cc.gatech.edu/~atumanov/" class="mentor-link"
+                    target="_blank" rel="noopener">Prof. Alexey Tumanov</a>, <a
+                    href="https://sites.cc.gatech.edu/home/ada/" class="mentor-link" target="_blank"
+                    rel="noopener">Prof. Ada Gavrilovska</a></p>
             <p>dgarg[39] (at) gatech (dot) edu</p>
             <div class="social-links-header">
                 <a href="https://scholar.google.com/citations?user=Vs8I1BsAAAAJ&hl=en" target="_blank" rel="noopener"><i
@@ -50,12 +57,25 @@
         </div>
     </header>
 
+    <!-- Top navigation (sticky) -->
+    <nav class="top-nav" aria-label="Main navigation">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#research">Research</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+        </ul>
+    </nav>
+
     <main>
         <section id="about">
             <h2>About</h2>
             <p>Hi — I'm Dhruv Garg, a third year PhD student in Computer Science
-                at Georgia Tech. My work focuses on systems for efficient machine
-                learning inference and robust federated learning. I am advised by
+                at Georgia Tech. I am advised by
                 Prof. Alexey Tumanov and Prof. Ada Gavrilovska.</p>
         </section>
 
@@ -260,6 +280,14 @@
             </div>
         </section>
     </main>
+
+    <section id="travel-map">
+        <h2>Travel Map</h2>
+        <div id="travelMap" style="height:420px; width:100%; border:1px solid var(--border-color); border-radius:8px;">
+        </div>
+        <p class="map-legend"><span class="legend work"></span> Work/Study &nbsp; <span class="legend vacation"></span>
+            Vacation &nbsp; <span class="legend home"></span> Home</p>
+    </section>
 
     <footer>
         <p>Last updated: October 2025. Design and source code from <a href="https://cs.stanford.edu/~yuhuiz/">Yuhui

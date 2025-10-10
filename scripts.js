@@ -13,11 +13,25 @@ document.addEventListener('DOMContentLoaded', function () {
     section.style.animationDelay = `${index * 0.1}s`;
   });
 
+  // Adjust anchors so sticky header does not cover section headings
+  function adjustSectionScrollOffset() {
+    const nav = document.querySelector('.top-nav');
+    const offset = (nav && nav.offsetHeight) ? nav.offsetHeight + 12 : 64; // px
+    document.querySelectorAll('section').forEach(s => {
+      s.style.scrollMarginTop = `${offset}px`;
+    });
+  }
+
+  // run once and on resize
+  adjustSectionScrollOffset();
+  window.addEventListener('resize', adjustSectionScrollOffset);
+
   // Add event listener for toggle button
   const toggleButton = document.getElementById('toggle-publications');
   if (toggleButton) {
     toggleButton.addEventListener('click', togglePublications);
   }
+
 });
 
 // Load publications from JSON file
@@ -233,11 +247,12 @@ function initTravelMap() {
   leafletScript.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
   leafletScript.onload = () => {
     try {
-      const map = L.map('travelMap').setView([33.7490, -84.3880], 5); // Atlanta sample
+      // store mapRef globally so we can call invalidateSize later
+      window._travelMapRef = L.map('travelMap').setView([33.7490, -84.3880], 5); // Atlanta sample
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
-      }).addTo(map);
+      }).addTo(window._travelMapRef);
 
       // marker color categories: work, vacation, home
       const icon = (color) => L.divIcon({
@@ -270,6 +285,10 @@ function initTravelMap() {
 
       // Add sample Atlanta work marker
       addMarker({ name: 'Atlanta, GA, USA', category: 'work' });
+
+      // Fix jitter: invalidate size after a short delay and on window resize
+      setTimeout(() => { try { window._travelMapRef.invalidateSize(); } catch (e) { } }, 300);
+      window.addEventListener('resize', () => { try { window._travelMapRef.invalidateSize(); } catch (e) { } });
 
       // expose helper globally for quick additions in console or future UI
       window.addTravelLocation = addMarker;

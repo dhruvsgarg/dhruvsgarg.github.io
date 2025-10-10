@@ -27,3 +27,44 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
+
+
+// Lightweight helpers inspired by the Academic template
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggleMoreWorks() {
+    const dd = document.getElementById('moreWorksDropdown');
+    if (!dd) return;
+    dd.classList.toggle('open');
+}
+
+function copyBibTeX() {
+    const codeEl = document.getElementById('bibtex-code');
+    if (!codeEl) return;
+    const text = codeEl.innerText || codeEl.textContent;
+    if (!navigator.clipboard) {
+        // fallback
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) { }
+        document.body.removeChild(ta);
+        return;
+    }
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-bibtex-btn .copy-text');
+        if (btn) {
+            const orig = btn.textContent;
+            btn.textContent = 'Copied';
+            setTimeout(() => btn.textContent = orig, 1400);
+        }
+    });
+}
+
+// Expose helpers to global scope so inline onclick attributes work in templates
+window.scrollToTop = scrollToTop;
+window.toggleMoreWorks = toggleMoreWorks;
+window.copyBibTeX = copyBibTeX;

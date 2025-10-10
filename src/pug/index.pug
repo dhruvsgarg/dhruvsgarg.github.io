@@ -8,21 +8,43 @@ html(lang='en')
         meta(name='description', content='')
         meta(name='author', content='')
 
-        title Resume - Start Bootstrap Theme
+    title Academic Page
 
-        link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
+    link(rel='icon', type='image/x-icon', href='assets/img/favicon.ico')
 
-        // Font Awesome icons (free version)
-        script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js', crossorigin='anonymous')
+    // Font Awesome icons (free version)
+    script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js', crossorigin='anonymous')
 
-        // Google fonts
-        link(href='https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700', rel='stylesheet', type='text/css')
-        link(href='https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i', rel='stylesheet', type='text/css')
+    // Inter font (lightweight system UI font)
+    link(href='https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap', rel='stylesheet')
 
-        // Core theme CSS (includes Bootstrap)
-        link(href='css/styles.css', rel='stylesheet')
+    // Core theme CSS (includes Bootstrap)
+    link(href='css/styles.css', rel='stylesheet')
 
     body#page-top
+
+        // Scroll to top button (used by new lightweight script)
+        button.scroll-to-top(onclick='scrollToTop()', title='Scroll to top', aria-label='Scroll to top')
+            i.fas.fa-chevron-up
+
+        // More works dropdown trigger
+        .more-works-container
+            button.more-works-btn(onclick='toggleMoreWorks()', title='View More Works from Our Lab')
+                i.fas.fa-flask
+                |  More Works
+                i.fas.fa-chevron-down.dropdown-arrow
+            .more-works-dropdown#moreWorksDropdown
+                .dropdown-header
+                    h4 More Works from Our Lab
+                    button.close-btn(onclick='toggleMoreWorks()')
+                        i.fas.fa-times
+                .works-list
+                    //- Replace with related works links if desired
+                    a.work-item(href='#')
+                        .work-info
+                            h5 Example Work
+                            p Brief description of the work and its main contribution.
+                        i.fas.fa-external-link-alt
 
         // Navigation
         nav#sideNav.navbar.navbar-expand-lg.navbar-dark.bg-primary.fixed-top
@@ -48,7 +70,7 @@ html(lang='en')
                         a.nav-link.js-scroll-trigger(href='#awards') Awards
 
         // Page Content
-        .container-fluid.p-0
+    main#main-content.container-fluid.p-0
 
             // About
             section#about.resume-section

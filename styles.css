@@ -22,6 +22,26 @@ body {
 }
 
 header {
+/* Mentor / advisor link styling (subtle) */
+.mentor {
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.mentor-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(74,116,185,0.18);
+  padding-bottom: 1px;
+  transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
+}
+
+.mentor-link:hover {
+  color: var(--accent-color);
+  border-bottom-color: rgba(74,116,185,0.45);
+}
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;

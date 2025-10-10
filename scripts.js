@@ -248,11 +248,20 @@ function initTravelMap() {
   leafletScript.onload = () => {
     try {
       // store mapRef globally so we can call invalidateSize later
-      window._travelMapRef = L.map('travelMap').setView([33.7490, -84.3880], 5); // Atlanta sample
+      window._travelMapRef = L.map('travelMap', { preferCanvas: true }).setView([33.7490, -84.3880], 5); // Atlanta sample
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(window._travelMapRef);
+
+      // local reference
+      const map = window._travelMapRef;
+
+      // disable wheel zoom by default to avoid accidental page scroll capture
+      if (map && map.scrollWheelZoom) map.scrollWheelZoom.disable();
+      // enable wheel zoom when cursor is over the map
+      map.on('mouseover', () => { try { map.scrollWheelZoom.enable(); } catch (e) { } });
+      map.on('mouseout', () => { try { map.scrollWheelZoom.disable(); } catch (e) { } });
 
       // marker color categories: work, vacation, home
       const icon = (color) => L.divIcon({

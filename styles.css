@@ -43,18 +43,19 @@ header {
     padding-bottom: 1px;
     transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
 
-/* Constrain travelMap so it occupies a bounded area and interactions are inside */
-#travelMap {
-  width: 100%;
-  max-width: 100%;
-  height: 420px; /* fixed visual area */
-  border-radius: 8px;
-}
+    /* Constrain travelMap so it occupies a bounded area and interactions are inside */
+    #travelMap {
+      width: 100%;
+      max-width: 100%;
+      height: 420px;
+      /* fixed visual area */
+      border-radius: 8px;
+    }
 
-/* Make sure Leaflet container doesn't exceed area and pointer interactions are limited to the map */
-.leaflet-container {
-  touch-action: pan-y;
-}
+    /* Make sure Leaflet container doesn't exceed area and pointer interactions are limited to the map */
+    .leaflet-container {
+      touch-action: pan-y;
+    }
   }
 
   .mentor-link:hover {
@@ -105,8 +106,12 @@ h2 {
 }
 
 /* Navigation */
-nav {
+.leaflet-container {
   margin-top: 1.5rem;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative;
+  overflow: hidden;
 }
 
 nav ul {

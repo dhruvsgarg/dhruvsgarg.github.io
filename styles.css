@@ -5,7 +5,7 @@
   --accent-color: #4a74b9;
   --accent-hover: #3a5c9e;
   --border-color: #e2e8f0;
-  --shadow-color: rgba(0,0,0,0.05);
+  --shadow-color: rgba(0, 0, 0, 0.05);
   --animation-offset: 3px;
   --transition-time: 0.3s;
 }
@@ -22,26 +22,28 @@ body {
 }
 
 header {
-/* Mentor / advisor link styling (subtle) */
-.mentor {
-  margin-top: 0.45rem;
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  font-style: italic;
-}
 
-.mentor-link {
-  color: var(--text-secondary);
-  text-decoration: none;
-  border-bottom: 1px dotted rgba(74,116,185,0.18);
-  padding-bottom: 1px;
-  transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
-}
+  /* Mentor / advisor link styling (subtle) */
+  .mentor {
+    margin-top: 0.45rem;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
 
-.mentor-link:hover {
-  color: var(--accent-color);
-  border-bottom-color: rgba(74,116,185,0.45);
-}
+  .mentor-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-bottom: 1px dotted rgba(74, 116, 185, 0.18);
+    padding-bottom: 1px;
+    transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
+  }
+
+  .mentor-link:hover {
+    color: var(--accent-color);
+    border-bottom-color: rgba(74, 116, 185, 0.45);
+  }
+
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
@@ -97,7 +99,8 @@ nav ul {
   gap: 1.25rem;
 }
 
-nav a, .social-links-header a {
+nav a,
+.social-links-header a {
   text-decoration: none;
   color: var(--text-secondary);
   transition: all var(--transition-time) ease;
@@ -106,7 +109,8 @@ nav a, .social-links-header a {
   border-radius: 4px;
 }
 
-nav a:hover, .social-links-header a:hover {
+nav a:hover,
+.social-links-header a:hover {
   color: var(--accent-color);
   background-color: rgba(74, 116, 185, 0.08);
   transform: translateX(var(--animation-offset));
@@ -123,12 +127,19 @@ nav a:hover, .social-links-header a:hover {
 }
 
 /* Unified animation for elements (not sections) */
-.publication-item, .award-item, .service-category, .misc-item, .news-list li {
+.publication-item,
+.award-item,
+.service-category,
+.misc-item,
+.news-list li {
   transition: transform var(--transition-time) ease;
 }
 
-.publication-item:hover, .award-item:hover, 
-.service-category:hover, .misc-item:hover, .news-list li:hover {
+.publication-item:hover,
+.award-item:hover,
+.service-category:hover,
+.misc-item:hover,
+.news-list li:hover {
   transform: translateX(var(--animation-offset));
 }
 
@@ -138,6 +149,7 @@ nav a:hover, .social-links-header a:hover {
     opacity: 0;
     transform: translateX(var(--animation-offset));
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -250,7 +262,7 @@ section {
   padding: 0.15rem 0.5rem;
   border-radius: 4px;
   display: inline-block;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   white-space: nowrap;
   animation: pulse 2s infinite;
 }
@@ -259,9 +271,11 @@ section {
   0% {
     box-shadow: 0 0 0 0 rgba(74, 116, 185, 0.4);
   }
+
   70% {
     box-shadow: 0 0 0 6px rgba(74, 116, 185, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(74, 116, 185, 0);
   }
@@ -348,7 +362,8 @@ section {
   color: var(--accent-color);
 }
 
-.service-category p, .misc-item p {
+.service-category p,
+.misc-item p {
   margin: 0.25rem 0 0.75rem;
 }
 
@@ -402,7 +417,7 @@ strong {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.85);
+  background-color: rgba(0, 0, 0, 0.85);
   transition: opacity var(--transition-time);
   opacity: 0;
 }
@@ -417,7 +432,7 @@ strong {
   max-width: 85%;
   max-height: 85%;
   border-radius: 4px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   animation: zoom var(--transition-time) ease-out;
 }
 
@@ -426,6 +441,7 @@ strong {
     transform: scale(0.8);
     opacity: 0;
   }
+
   to {
     transform: scale(1);
     opacity: 1;
@@ -452,6 +468,7 @@ strong {
 
 /* Responsive design fixes */
 @media (max-width: 768px) {
+
   /* Make header stack vertically on mobile */
   header {
     flex-direction: column-reverse;
@@ -467,9 +484,14 @@ strong {
   }
 
   /* Disable right-moving hover animations on mobile */
-  .publication-item:hover, .award-item:hover, 
-  .service-category:hover, .misc-item:hover, .news-list li:hover,
-  nav a:hover, .social-links-header a:hover, .pub-links a:hover {
+  .publication-item:hover,
+  .award-item:hover,
+  .service-category:hover,
+  .misc-item:hover,
+  .news-list li:hover,
+  nav a:hover,
+  .social-links-header a:hover,
+  .pub-links a:hover {
     transform: none !important;
   }
 }

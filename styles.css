@@ -56,10 +56,6 @@ header .mentor-link:hover {
   border-bottom-color: rgba(74, 116, 185, 0.45);
 }
 
-/* Make sure Leaflet container doesn't exceed area and pointer interactions are limited to the map */
-.leaflet-container {
-  touch-action: pan-y;
-}
 
 .header-content {
   flex: 1;
@@ -96,13 +92,7 @@ h2 {
 }
 
 /* Navigation */
-.leaflet-container {
-  margin-top: 1.5rem;
-  width: 100% !important;
-  height: 100% !important;
-  position: relative;
-  overflow: hidden;
-}
+/* Map-related container rules removed (travel map feature disabled) */
 
 nav ul {
   list-style: none;

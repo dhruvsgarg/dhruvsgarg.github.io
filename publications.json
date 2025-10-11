@@ -49,23 +49,6 @@
       "links": {}
     },
     {
-      "title": "DSched: A Framework for Deadline and DAG-Aware Declarative Scheduling",
-      "authors": [
-        "S Kalra",
-        "A Khare",
-        "E Pinto",
-        "D Garg",
-        "R Bafna",
-        "I Stoica",
-        "A Tumanov"
-      ],
-      "venue": "Under Review",
-      "thumbnail": "images/thumbs/tech_tower_steps.jpg",
-      "selected": 0,
-      "award": "",
-      "links": {}
-    },
-    {
       "title": "AMosaic: Dynamic Composition of Agents through Efficient Reuse",
       "authors": [
         "D Garg",

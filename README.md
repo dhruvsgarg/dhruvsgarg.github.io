@@ -76,7 +76,7 @@ A clean, minimal academic website template, designed for researchers and PhD stu
         "title": "Paper Title",
         "authors": ["D Garg", "A Other"],
         "venue": "Conference/Year",
-        "thumbnail": "images/thumbs/1.jpg",
+        "thumbnail": "images/thumbs/tech_tower_steps.jpg",
         "selected": 1,
         "award": "Best Paper",
         "links": { "pdf": "https://...", "doi": "https://...", "video": "https://..." }

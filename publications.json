@@ -49,6 +49,23 @@
       "links": {}
     },
     {
+      "title": "A work on scheduling for datacenter workloads",
+      "authors": [
+        "S Kalra",
+        "A Khare",
+        "E Pinto",
+        "D Garg",
+        "R Bafna",
+        "I Stoica",
+        "A Tumanov"
+      ],
+      "venue": "Under Review, title changed",
+      "thumbnail": "images/thumbs/tech_tower_steps.jpg",
+      "selected": 0,
+      "award": "",
+      "links": {}
+    },
+    {
       "title": "AMosaic: Dynamic Composition of Agents through Efficient Reuse",
       "authors": [
         "D Garg",

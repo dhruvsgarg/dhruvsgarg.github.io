@@ -44,7 +44,6 @@ function loadPublications() {
       return response.json();
     })
     .then(data => {
-      console.log("Publications loaded successfully:", data);
       allPublications = data.publications;
       renderPublications(true);
     })

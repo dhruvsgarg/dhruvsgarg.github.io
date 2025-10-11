@@ -139,10 +139,7 @@ nav a:hover,
   margin-right: 0.4rem;
 }
 
-/* Force Instagram icon to match the site's icon color (avoid default colorful gradient) */
-.social-links-header a .fa-instagram {
-  color: var(--text-secondary);
-}
+/* Instagram icon color is handled by the general social link rules; no special override needed */
 
 /* Unified animation for elements (not sections) */
 .publication-item,

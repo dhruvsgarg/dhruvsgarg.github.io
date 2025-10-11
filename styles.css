@@ -27,48 +27,38 @@ body {
 }
 
 header {
-
-  /* Mentor / advisor link styling (subtle) */
-  .mentor {
-    margin-top: 0.45rem;
-    font-size: 0.92rem;
-    color: var(--text-secondary);
-    font-style: italic;
-  }
-
-  .mentor-link {
-    color: var(--text-secondary);
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(74, 116, 185, 0.18);
-    padding-bottom: 1px;
-    transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
-
-    /* Constrain travelMap so it occupies a bounded area and interactions are inside */
-    #travelMap {
-      width: 100%;
-      max-width: 100%;
-      height: 420px;
-      /* fixed visual area */
-      border-radius: 8px;
-    }
-
-    /* Make sure Leaflet container doesn't exceed area and pointer interactions are limited to the map */
-    .leaflet-container {
-      touch-action: pan-y;
-    }
-  }
-
-  .mentor-link:hover {
-    color: var(--accent-color);
-    border-bottom-color: rgba(74, 116, 185, 0.45);
-  }
-
   margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/* Mentor / advisor link styling (subtle) */
+header .mentor {
+  margin-top: 0.45rem;
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+header .mentor-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-bottom: 1px dotted rgba(74, 116, 185, 0.18);
+  padding-bottom: 1px;
+  transition: color var(--transition-time) ease, border-color var(--transition-time) ease;
+}
+
+header .mentor-link:hover {
+  color: var(--accent-color);
+  border-bottom-color: rgba(74, 116, 185, 0.45);
+}
+
+/* Make sure Leaflet container doesn't exceed area and pointer interactions are limited to the map */
+.leaflet-container {
+  touch-action: pan-y;
 }
 
 .header-content {
@@ -550,41 +540,7 @@ strong {
 }
 
 /* Travel map legend and marker */
-.map-legend {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  margin-top: 0.6rem
-}
+/* legend and map-specific styles removed (travel map has been disabled) */
 
-.legend {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 0.35rem;
-  vertical-align: middle
-}
-
-.legend.work {
-  background: #2a7ae2;
-  /* blue for work/study/home */
-}
-
-.legend.vacation {
-  background: #4ac28a;
-  /* green for vacation */
-}
-
-.legend.layover {
-  background: #e28a2a;
-  /* orange for layovers */
-}
-
-.custom-marker .dot {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)
-}
+/* Static map (equirectangular) styling */
+/* map-related rules removed */

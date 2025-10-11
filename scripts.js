@@ -263,7 +263,8 @@ function initTravelMap() {
       map.on('mouseover', () => { try { map.scrollWheelZoom.enable(); } catch (e) { } });
       map.on('mouseout', () => { try { map.scrollWheelZoom.disable(); } catch (e) { } });
 
-      // marker color categories: work, vacation, home
+      // marker color categories mapping (blue: work/home/study, green: vacation, orange: layover)
+      const CATEGORY_COLORS = { work: '#2a7ae2', home: '#2a7ae2', study: '#2a7ae2', vacation: '#4ac28a', layover: '#e28a2a' };
       const icon = (color) => L.divIcon({
         className: 'custom-marker',
         html: `<span style="background:${color}" class="dot"></span>`,
@@ -273,9 +274,9 @@ function initTravelMap() {
 
       // helper to add marker by latlng or geocode by name (simple)
       function addMarker({ lat, lng, name, category = 'work' }) {
-        const colors = { work: '#2a7ae2', vacation: '#e24a4a', home: '#4ac28a' };
-        if (lat && lng) {
-          L.marker([lat, lng], { icon: icon(colors[category]) }).addTo(map).bindPopup(`<strong>${name}</strong>`);
+        const color = CATEGORY_COLORS[category] || CATEGORY_COLORS.work;
+        if (typeof lat === 'number' && typeof lng === 'number') {
+          L.circleMarker([lat, lng], { radius: 7, color: color, fillColor: color, fillOpacity: 0.9 }).addTo(map).bindPopup(`<strong>${name}</strong>`);
         } else if (name) {
           // Use Nominatim for simple name -> latlng (rate-limited, public)
           fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(name)}`)
@@ -283,8 +284,7 @@ function initTravelMap() {
             .then(results => {
               if (results && results[0]) {
                 const latf = parseFloat(results[0].lat), lngf = parseFloat(results[0].lon);
-                L.marker([latf, lngf], { icon: icon(colors[category]) }).addTo(map).bindPopup(`<strong>${name}</strong>`);
-                map.setView([latf, lngf], 6);
+                L.circleMarker([latf, lngf], { radius: 7, color: color, fillColor: color, fillOpacity: 0.9 }).addTo(map).bindPopup(`<strong>${name}</strong>`);
               }
             }).catch(() => {
               console.warn('Geocoding failed for', name);
@@ -292,12 +292,28 @@ function initTravelMap() {
         }
       }
 
-      // Add sample Atlanta work marker
-      addMarker({ name: 'Atlanta, GA, USA', category: 'work' });
+      // Load travel.json and render markers
+      fetch('travel.json').then(r => r.json()).then(data => {
+        const locs = data && data.locations ? data.locations : [];
+        locs.forEach(loc => {
+          addMarker({ lat: loc.lat, lng: loc.lng, name: loc.name, category: loc.category });
+        });
+      }).catch(e => {
+        console.warn('Could not load travel.json, adding sample marker');
+        addMarker({ name: 'Atlanta, GA, USA', category: 'work' });
+      });
 
-      // Fix jitter: invalidate size after a short delay and on window resize
-      setTimeout(() => { try { window._travelMapRef.invalidateSize(); } catch (e) { } }, 300);
-      window.addEventListener('resize', () => { try { window._travelMapRef.invalidateSize(); } catch (e) { } });
+      // Configure map interaction: disable zooming entirely; allow horizontal panning (world wrap)
+      map.setMaxBounds([[-90, -360], [90, 360]]);
+      map.options.maxZoom = 3;
+      map.options.minZoom = 1;
+      try { map.zoomControl.remove(); } catch (e) { }
+      try { map.dragging.enable(); } catch (e) { }
+      try { map.scrollWheelZoom.disable(); } catch (e) { }
+
+      // Invalidate size reliably
+      setTimeout(() => { try { map.invalidateSize(); } catch (e) { } }, 250);
+      window.addEventListener('resize', () => { try { map.invalidateSize(); } catch (e) { } });
 
       // expose helper globally for quick additions in console or future UI
       window.addTravelLocation = addMarker;

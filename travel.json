@@ -1,0 +1,22 @@
+{
+    "locations": [
+        {
+            "name": "Atlanta, GA, USA",
+            "lat": 33.7490,
+            "lng": -84.3880,
+            "category": "work"
+        },
+        {
+            "name": "Paris, France",
+            "lat": 48.8566,
+            "lng": 2.3522,
+            "category": "vacation"
+        },
+        {
+            "name": "Reykjavik Airport",
+            "lat": 64.13,
+            "lng": -21.94,
+            "category": "layover"
+        }
+    ]
+}

@@ -566,15 +566,18 @@ strong {
 }
 
 .legend.work {
-  background: #2a7ae2
+  background: #2a7ae2;
+  /* blue for work/study/home */
 }
 
 .legend.vacation {
-  background: #e24a4a
+  background: #4ac28a;
+  /* green for vacation */
 }
 
-.legend.home {
-  background: #4ac28a
+.legend.layover {
+  background: #e28a2a;
+  /* orange for layovers */
 }
 
 .custom-marker .dot {

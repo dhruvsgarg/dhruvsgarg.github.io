@@ -61,6 +61,22 @@
       ],
       "venue": "Under Review",
       "thumbnail": "images/thumbs/tech_tower_steps.jpg",
+      "selected": 0,
+      "award": "",
+      "links": {}
+    },
+    {
+      "title": "AMosaic: Dynamic Composition of Agents through Efficient Reuse",
+      "authors": [
+        "D Garg",
+        "I Vohra",
+        "S Sundaresan",
+        "S Agarwal",
+        "A Tumanov",
+        "S Mitra"
+      ],
+      "venue": "In Preparation",
+      "thumbnail": "images/thumbs/amosaic.png",
       "selected": 1,
       "award": "",
       "links": {}

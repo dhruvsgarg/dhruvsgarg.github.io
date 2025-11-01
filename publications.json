@@ -1,7 +1,7 @@
 {
   "publications": [
     {
-      "title": "FeLiX: Federated Learning in Highly Unavailable Heterogeneous Conditions",
+      "title": "FLuX: Federated Learning in Highly Unavailable Heterogeneous Conditions",
       "authors": [
         "D Garg",
         "N Lakhani",
@@ -10,7 +10,7 @@
         "A Tumanov",
         "A Gavrilovska"
       ],
-      "venue": "In Preparation",
+      "venue": "Preprint",
       "thumbnail": "images/thumbs/tech_tower_steps.jpg",
       "selected": 1,
       "award": "",
@@ -33,7 +33,7 @@
       "links": {}
     },
     {
-      "title": "FeLiX-FFL: Robust Federated Fine-tuning of LLMs",
+      "title": "FLuX-FFL: Robust Federated Fine-tuning of LLMs",
       "authors": [
         "D Garg",
         "G Dadlaney",

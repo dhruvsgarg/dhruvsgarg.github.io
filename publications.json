@@ -17,16 +17,18 @@
       "links": {}
     },
     {
-      "title": "MetaServe: Generalizing ML Serving with Mechanism/Policy Separation",
+      "title": "Heterogeneous ML Serving with Mechanism/Policy Separation",
       "authors": [
         "D Garg",
         "A Khare",
-        "N Lakhani",
         "T Khare",
-        "S Grandhi",
+        "N Lakhani",
+        "I Vohra",
+        "P Behnam",
+        "A Gavrilovska",
         "A Tumanov"
       ],
-      "venue": "In Preparation",
+      "venue": "Under Review, title changed",
       "thumbnail": "images/thumbs/tech_tower_steps.jpg",
       "selected": 1,
       "award": "",
